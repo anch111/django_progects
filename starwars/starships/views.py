@@ -52,3 +52,11 @@ def get_imperial_shuttle_info(request):
 
         return render(request, 'starships/starship.html', updated_data)
     return HttpResponse('не удалось')
+
+def get_death_star_info(request):
+    data = send_req('https://swapi.dev/api/starships/9/')
+    if data:
+        updated_data = update_data(data)
+
+        return render(request, 'starships/starship.html', updated_data)
+    return HttpResponse('не удалось')
