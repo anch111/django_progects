@@ -22,3 +22,5 @@ urlpatterns = [
     path('peple/', include('peple.urls')),
     path('starships/', include('starships.urls'))
 ]
+
+....
