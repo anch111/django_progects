@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} - Архивы Повстанческого Альянса</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #e0f7ff;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: 
+                linear-gradient(rgba(11, 15, 25, 0.95), rgba(11, 15, 25, 0.95)),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 19px,
+                    rgba(0, 180, 255, 0.03) 20px,
+                    rgba(0, 180, 255, 0.03) 21px
+                );
+            background-size: 100% 20px;
+        }
+
+        .terminal-frame {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 2px solid #00aaff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+        }
+
+        header {
+            background: rgba(0, 20, 30, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #00aaff;
+        }
+
+        .logo {
+            font-size: 2.4rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: #80d0ff;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .record-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #00aaff;
+        }
+
+        .record-id {
+            font-size: 1.1rem;
+            color: #00ffff;
+        }
+
+        .record-main {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .record-avatar {
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 30, 50, 0.6);
+            border: 1px solid #00aaff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: #00ffff;
+        }
+
+        .record-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .field {
+            background: rgba(0, 25, 40, 0.5);
+            padding: 12px;
+            border-left: 3px solid #00aaff;
+        }
+
+        .field-label {
+            font-size: 0.8rem;
+            color: #80d0ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .field-value {
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+
+        .section {
+            margin: 35px 0;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #00ffff;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #005577;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .items-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .item {
+            background: rgba(0, 30, 50, 0.6);
+            border: 1px solid #005577;
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .item i {
+            color: #00ffff;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #005577;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #80d0ff;
+        }
+
+        @media (max-width: 768px) {
+            .record-header {
+                flex-direction: column;
+                align-items: center;
+            }
+            .record-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-frame">
+        <header>
+            <div class="logo">STAR WARS • DB</div>
+            <div class="subtitle">ПОВСТАНЧЕСКИЙ АЛЬЯНС — КЛАССИФИЦИРОВАНО</div>
+        </header>
+
+        <div class="content">
+            <div class="record-header">
+                <div class="record-avatar">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+                <div class="record-main">
+                    <div class="record-id">ID: REB-{{ name|slice:":3"|upper }}</div>
+                    <h1 style="font-size: 2rem; color: #ffffff; margin: 10px 0;">{{ name }}</h1>
+                </div>
+            </div>
+
+            <div class="record-info">
+                <div class="field">
+                    <div class="field-label">Имя</div>
+                    <div class="field-value">{{ name }}</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Рост</div>
+                    <div class="field-value">{{ height }} см</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Масса</div>
+                    <div class="field-value">{{ mass }} кг</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Цвет волос</div>
+                    <div class="field-value">{{ hair_color }}</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Цвет кожи</div>
+                    <div class="field-value">{{ skin_color }}</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Цвет глаз</div>
+                    <div class="field-value">{{ eye_color }}</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Год рождения</div>
+                    <div class="field-value">{{ birth_year }}</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Пол</div>
+                    <div class="field-value">{{ gender }}</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-film"></i> Фильмы</h2>
+                <div class="items-list">
+                    {% for film in films %}
+                    <div class="item">
+                        <i class="fas fa-film"></i>
+                        <span>{{ film }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-tractor"></i> Наземный транспорт</h2>
+                <div class="items-list">
+                    {% for vehicle in vehicles %}
+                    <div class="item">
+                        <i class="fas fa-car"></i>
+                        <span>{{ vehicle }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-space-shuttle"></i> Звёздные корабли</h2>
+                <div class="items-list">
+                    {% for starship in starships %}
+                    <div class="item">
+                        <i class="fas fa-rocket"></i>
+                        <span>{{ starship }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <footer>
+                <div>АРХИВ ОБНОВЛЁН: {{ now|date:"d.m.Y H:i" }}</div>
+                <div>СИСТЕМА: REBEL-DB v2.1 • ДОСТУП: УРОВЕНЬ ОМЕГА</div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

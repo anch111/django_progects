@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>База персонажей — Звёздные Войны</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0c0f1d;
+            color: #a0d8f1;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+            padding: 20px;
+            background-image: 
+                linear-gradient(rgba(12, 15, 29, 0.95), rgba(12, 15, 29, 0.95)),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 19px,
+                    rgba(0, 150, 220, 0.04) 20px,
+                    rgba(0, 150, 220, 0.04) 21px
+                );
+            background-size: 100% 20px;
+        }
+
+        .db-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 2px solid #00c0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 192, 224, 0.25);
+        }
+
+        header {
+            background: rgba(0, 20, 35, 0.9);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #00c0e0;
+        }
+
+        .header-title {
+            font-size: 2.2rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+
+        .header-subtitle {
+            font-size: 0.95rem;
+            color: #70c0e0;
+            letter-spacing: 1.5px;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .records-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 22px;
+        }
+
+        /* ВАЖНО: весь блок — ссылка */
+        .record-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .record-card {
+            background: rgba(0, 25, 45, 0.7);
+            border: 1px solid #005a7a;
+            border-radius: 6px;
+            padding: 18px;
+            transition: all 0.25s ease;
+        }
+
+        .record-link:hover .record-card {
+            border-color: #00c0e0;
+            background: rgba(0, 35, 60, 0.85);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 192, 224, 0.2);
+        }
+
+        .record-name {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .record-name i {
+            color: #00c0e0;
+        }
+
+        .record-field {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            margin: 5px 0;
+        }
+
+        .field-label {
+            color: #70c0e0;
+        }
+
+        .field-value {
+            color: #e0f7ff;
+            text-align: right;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #005a7a;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #70c0e0;
+        }
+
+        @media (max-width: 768px) {
+            .records-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="db-container">
+        <header>
+            <div class="header-title">GALACTIC PERSONNEL DATABASE</div>
+            <div class="header-subtitle">ПОВСТАНЧЕСКИЙ АЛЬЯНС — УРОВЕНЬ ДОСТУПА: АЛЬФА</div>
+        </header>
+
+        <div class="content">
+            <h1 style="color: #00c0e0; margin-bottom: 20px; font-size: 1.5rem;">
+                <i class="fas fa-database"></i> ЗАПИСИ ПЕРСОНАЖЕЙ
+            </h1>
+
+
+                <div class="records-list">
+                    {% for person in people %}
+                        <!-- Ссылка на детальную страницу, например /character/1/ -->
+                        <a href="{% url 'character' id=person.id %}" class="record-link">
+                            <div class="record-card">
+                                <div class="record-name">
+                                    <i class="fas fa-user"></i>
+                                    {{ person.name }}
+                                </div>
+                                <div class="record-field">
+                                    <span class="field-label">Рост:</span>
+                                    <span class="field-value">{{ person.height }} см</span>
+                                </div>
+                                <div class="record-field">
+                                    <span class="field-label">Масса:</span>
+                                    <span class="field-value">{{ person.mass }} кг</span>
+                                </div>
+                                <div class="record-field">
+                                    <span class="field-label">Год рожд.:</span>
+                                    <span class="field-value">{{ person.birht_year }}</span>
+                                
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <footer>
+                <div>ВСЕГО ЗАПИСЕЙ: {{ characters|length }}</div>
+                <div>DB SYSTEM v3.1 • REBEL NETWORK • ENCRYPTED</div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
