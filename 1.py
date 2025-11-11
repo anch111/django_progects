@@ -1,5 +1,5 @@
 import requests
-import json...
+import json..
 
 def send_request(url):
     response = requests.get(url)
@@ -34,3 +34,4 @@ def main():
 if __name__ == '__main__':
 
     main()
+
