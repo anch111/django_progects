@@ -199,36 +199,36 @@
 
             <div class="record-info">
                 <div class="field">
-                    <div class="field-label">Имя</div>
+                    <div class="field-label">Название</div>
                     <div class="field-value">{{ name }}</div>
                 </div>
                 <div class="field">
-                    <div class="field-label">Рост</div>
-                    <div class="field-value">{{ height }} см</div>
+                    <div class="field-label">Модель</div>
+                    <div class="field-value">{{ model }} </div>
                 </div>
                 <div class="field">
-                    <div class="field-label">Масса</div>
-                    <div class="field-value">{{ mass }} кг</div>
+                    <div class="field-label">Производитель</div>
+                    <div class="field-value">{{ manufacturer }} </div>
                 </div>
                 <div class="field">
-                    <div class="field-label">Цвет волос</div>
-                    <div class="field-value">{{ hair_color }}</div>
+                    <div class="field-label">Стоимость в кредитах</div>
+                    <div class="field-value">{{ cost_in_credits }}</div>
                 </div>
                 <div class="field">
-                    <div class="field-label">Цвет кожи</div>
-                    <div class="field-value">{{ skin_color }}</div>
+                    <div class="field-label">Длина</div>
+                    <div class="field-value">{{ length }}</div>
                 </div>
                 <div class="field">
-                    <div class="field-label">Цвет глаз</div>
-                    <div class="field-value">{{ eye_color }}</div>
+                    <div class="field-label">Максимальная скорость</div>
+                    <div class="field-value">{{ max_atmosphering_speed }}</div>
                 </div>
                 <div class="field">
-                    <div class="field-label">Год рождения</div>
-                    <div class="field-value">{{ birth_year }}</div>
+                    <div class="field-label">Экипаж</div>
+                    <div class="field-value">{{ crew }}</div>
                 </div>
                 <div class="field">
-                    <div class="field-label">Пол</div>
-                    <div class="field-value">{{ gender }}</div>
+                    <div class="field-label">Пассажиры</div>
+                    <div class="field-value">{{ passengers }}</div>
                 </div>
             </div>
 
@@ -242,9 +242,9 @@
                     </div>
                     {% endfor %}
                 </div>
-            </div>
+            </div> 
 
-            <div class="section">
+            {% comment %} <div class="section">
                 <h2 class="section-title"><i class="fas fa-tractor"></i> Наземный транспорт</h2>
                 <div class="items-list">
                     {% for vehicle in vehicles %}
@@ -266,7 +266,7 @@
                     </div>
                     {% endfor %}
                 </div>
-            </div>
+            </div> {% endcomment %}
 
             <footer>
                 <div>АРХИВ ОБНОВЛЁН: {{ now|date:"d.m.Y H:i" }}</div>
