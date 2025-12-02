@@ -1,7 +1,7 @@
 import requests
 import sqlite3
 import json
-.
+
 
 def send_req(url):
     response = requests.get(url)
@@ -45,4 +45,5 @@ def main():
 if __name__ == '__main__':
 
     main()
+
 
