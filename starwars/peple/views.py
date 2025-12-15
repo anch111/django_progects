@@ -3,6 +3,8 @@ from django.http import JsonResponse, HttpResponse
 import requests
 
 
+
+
 # Create your views here.
 def send_req(url):
     response = requests.get(url)
@@ -44,4 +46,5 @@ def get_luke_info(request):
 
         return render(request, 'peple/person.html', updated_data)
     return HttpResponse('не удалось')
+
 
